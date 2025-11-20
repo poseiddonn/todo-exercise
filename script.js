@@ -65,3 +65,21 @@ const form = document.querySelector('form');  // The form
 const results = document.querySelector('.results'); // UL containing to-do list items!
 
 // \/ \/ \/ \/ WRITE YOUR CODE BELOW THIS LINE! \/ \/ \/ \/
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+  postItem()
+})
+
+const postItem = () => {
+  const task = input.value
+  const listItem = document.createElement("li")
+  listItem.addEventListener("click", function() {
+    this.classList.toggle("done")
+  })
+  const text = document.createElement("p")
+  text.textContent = task
+  listItem.appendChild(text)
+  results.appendChild(listItem)
+  input.value = ""
+}
